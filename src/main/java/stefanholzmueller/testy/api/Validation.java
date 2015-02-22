@@ -1,5 +1,5 @@
 package stefanholzmueller.testy.api;
 
-public interface Validation extends Step<Result> {
+public interface Validation extends Step {
 
 }

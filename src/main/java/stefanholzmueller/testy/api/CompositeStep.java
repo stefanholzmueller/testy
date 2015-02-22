@@ -2,22 +2,19 @@ package stefanholzmueller.testy.api;
 
 import org.openqa.selenium.WebDriver;
 
-public class CompositeStep<R> implements Step<R> {
+public class CompositeStep implements Step {
 
-	private Step<R>[] steps;
+	private Step[] steps;
 
-	public CompositeStep(Step<R>... steps) {
+	public CompositeStep(Step... steps) {
 		this.steps = steps;
 	}
 
-	public CompositeStep(Step<Void> action, Step<R> noErrorValidation) {
-		// TODO Auto-generated constructor stub
-	}
-
 	@Override
-	public R execute(WebDriver driver) {
-		for (Step<R> step : steps) {
-			R r = step.execute(driver);
+	public Result execute(WebDriver driver) {
+		for (Step step : steps) {
+			Result r = step.execute(driver);
+			// TODO handle success or failure?
 		}
 		return null;
 	}
