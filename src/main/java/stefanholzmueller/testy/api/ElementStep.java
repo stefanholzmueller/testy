@@ -11,10 +11,10 @@ public abstract class ElementStep implements Step {
 		this.finder = finder;
 	}
 
-	protected abstract Result execute(WebElement element);
+	protected abstract boolean execute(WebElement element);
 
 	@Override
-	public Result execute(WebDriver driver) {
+	public boolean execute(WebDriver driver) {
 		return execute(finder.find(driver));
 	}
 }

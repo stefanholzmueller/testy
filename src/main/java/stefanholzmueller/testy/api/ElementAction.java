@@ -11,9 +11,9 @@ public abstract class ElementAction extends ElementStep {
 	protected abstract void executeAction(WebElement element);
 
 	@Override
-	protected Result execute(WebElement element) {
+	protected boolean execute(WebElement element) {
 		executeAction(element);
-		return null; // TODO
+		return true; // convenience
 	}
 
 }

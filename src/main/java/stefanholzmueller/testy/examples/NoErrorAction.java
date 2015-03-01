@@ -6,7 +6,7 @@ import stefanholzmueller.testy.api.CompositeStep;
 public class NoErrorAction extends CompositeStep {
 
 	public NoErrorAction(Action action) {
-		super(action, new NoErrorValidation());
+		super(action, new NoErrorExpectation());
 	}
 
 }
