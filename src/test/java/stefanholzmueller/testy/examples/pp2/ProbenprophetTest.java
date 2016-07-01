@@ -5,31 +5,32 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.support.PageFactory;
+
+import stefanholzmueller.testy.api.Executor;
 
 public class ProbenprophetTest {
 
-	private static FirefoxDriver driver = new FirefoxDriver();
-	private static CheckPage page;
+	private static Executor executor;
 
 	@BeforeClass
 	public static void start() {
-		page = PageFactory.initElements(driver, CheckPage.class);
+		FirefoxDriver driver = new FirefoxDriver();
+		executor = new Executor(driver);
 	}
 
 	@Before
 	public void enterCheckPage() {
-		page.open();
+		executor.execute(new OpenCheckPage());
 	}
 
 	@Test
 	public void enterAttributes() throws Exception {
-		page.enterAttributes(1, 2, 3);
+		executor.execute(new EnterAttributes());
 	}
 
 	@AfterClass
 	public static void cleanup() {
-		driver.close();
+		executor.shutdown();
 	}
 
 }
